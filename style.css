@@ -14,6 +14,7 @@ body {
   font-family: 'Roboto', sans-serif;
   color: var(--background-dark);
   font-size: 1.125rem;
+  font-weight: 300;
 }
 
 .container {
@@ -63,7 +64,7 @@ body {
 .hero-paragraph {
   width: 72%;
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: 300;
   line-height: 1.4;
 }
 
@@ -244,4 +245,40 @@ li.nav-list-item {
   width: 77%;
   height: auto;
   padding: 4.5em 0;
+}
+
+/* Section four */
+
+.section-four-first {
+  background-color: var(--font-beige);
+  padding: 1.75em 0 7.75em;
+}
+
+.section-four-first-container {
+  width: 60%;
+  margin: 0 auto;
+  max-width: 800px
+}
+
+.section-four-first-container p {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.625rem;
+  text-align: center;
+}
+
+.two-buttons-container a {
+  text-decoration: none;
+  color: var(--background-dark);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 2px;
+  background-color: var(--font-beige);
+  padding: 1.75em 2.25em;
+  border: 1px solid var(--background-dark);
+  border-radius: 200px;
+}
+
+.two-buttons-container {
+  display: flex;
+  justify-content: space-around;
 }
