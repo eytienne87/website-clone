@@ -117,7 +117,7 @@ nav {
   flex: 1;
 }
 
-ul {
+nav ul {
   list-style-type: none;
   display: flex;
 }
@@ -247,7 +247,7 @@ li.nav-list-item {
   padding: 4.5em 0;
 }
 
-/* Section four */
+/* Section four - Header / 2 buttons */
 
 .section-four-first {
   background-color: var(--font-beige);
@@ -281,4 +281,81 @@ li.nav-list-item {
 .two-buttons-container {
   display: flex;
   justify-content: space-around;
+}
+
+/* Section four - carousel */
+
+.carousel {
+  background-color: var(--background-dark);
+  width: 83.5%;
+  margin: 0 auto;
+  padding: 5em 2.5em 3.5em 5em;
+}
+
+.carousel-slide {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 6em;
+}
+
+.carousel-slide h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.625rem;
+  color: var(--font-orange);
+  margin-top: 0;
+  margin-bottom: 0.75em;
+}
+
+.image-carousel {
+  max-width: 100%;
+}
+
+.carousel-slide li {
+  color: var(--font-beige);
+  position: relative;
+  line-height: 1.6;
+  margin-bottom: 1.75em;
+}
+
+.image-carousel {
+  width: 37%;
+}
+
+.text-carousel {
+  width: 58%;
+}
+
+.text-carousel ul {
+  list-style: none;
+}
+
+.text-carousel li::before {
+  content: '\2022';
+  display: inline-block;
+  color: var(--font-orange);
+  font-size: 2.75em;
+  top: -18px;
+  left: -45px;
+  position: absolute;
+}
+
+.text-carousel a {
+  text-decoration: none;
+  color: var(--font-beige);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.image-carousel img {
+  width: 100%;
+}
+
+.carousel-discover-link i {
+  color: var(--font-orange);
+  margin-left: 0.5em;
+}
+
+.carousel-discover-link {
+  margin-top: 3em;
+  text-align: right;
 }
