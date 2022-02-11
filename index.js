@@ -6,22 +6,27 @@ const adminButton = carouselButtons.firstElementChild;
 const memberButton = carouselButtons.lastElementChild;
 
 
-function handleSlideToggle(e) {
-  e.preventDefault();
-  if (slides[1].classList.contains('current-slide')) return;
+function handleBorderShadow() {
+  const otherButton = this.nextElementSibling || this.previousElementSibling;
 
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.transform = `translateX(-${trackWidth}px)`;
-  }
-
-  slides[1].classList.add('current-slide');
 }
 
 
+// Move the current slide and the next/previous slide when clicking on the buttons
+function handleSlideToggle(translateAmount) {
+  const currentSlide = track.querySelector('.current-slide');
+  const nextSlide = currentSlide.nextElementSibling || currentSlide.previousElementSibling;
 
+  currentSlide.style.transform = `translateX(${translateAmount}px)`;
+  nextSlide.style.transform = `translateX(${translateAmount}px)`;
+
+  nextSlide.classList.add('current-slide');
+  currentSlide.classList.remove('current-slide');
+}
+
+// Set the slides position relative to where the carousel track is
 function positionSlides(slides) {
   for (let i = 0; i < slides.length; i++) {
-    // console.log(slides[i].style.left);
     slides[i].style.left = `${trackWidth * i}px`;
     slides[i].style.right = `-${trackWidth * i}px`;
   }
@@ -30,5 +35,15 @@ function positionSlides(slides) {
 positionSlides(slides);
 
 
+memberButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  handleSlideToggle(-trackWidth);
+});
 
-memberButton.addEventListener('click', handleSlideToggle)
+adminButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  handleSlideToggle(0);
+});
+
+adminButton.addEventListener('click', handleBorderShadow)
+memberButton.addEventListener('click', handleBorderShadow)
