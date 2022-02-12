@@ -249,6 +249,11 @@ li.nav-list-item { cursor: pointer }
   text-align: center;
 }
 
+.two-buttons-container {
+  display: flex;
+  justify-content: space-around;
+}
+
 .two-buttons-container a {
   text-decoration: none;
   color: var(--background-dark);
@@ -257,13 +262,12 @@ li.nav-list-item { cursor: pointer }
   letter-spacing: 2px;
   background-color: var(--font-beige);
   padding: 1.75em 2.25em;
-  border: 1px solid var(--background-dark);
   border-radius: 200px;
+  transition: outline 300ms cubic-bezier(0.56,-0.06, 1, 1);
 }
 
-.two-buttons-container {
-  display: flex;
-  justify-content: space-around;
+.current-button {
+  outline: 1px solid var(--background-dark);
 }
 
 /* SUBSECTION: Carousel */
@@ -279,17 +283,19 @@ li.nav-list-item { cursor: pointer }
   position: relative;
   width: 100%;
   height: 518.28px;
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
 }
 
 .carousel-slide {
   display: flex;
   justify-content: space-between;
   padding-bottom: 6em;
-  border: 2px solid yellow;
+  /* border: 2px solid yellow; */
   position: absolute;
   transition: transform 400ms ease-out;
 }
+
+.text-carousel { width: 58% }
 
 .text-carousel h3 {
   font-family: 'Playfair Display', serif;
@@ -298,8 +304,6 @@ li.nav-list-item { cursor: pointer }
   margin-top: 0;
   margin-bottom: 0.75em;
 }
-
-.text-carousel { width: 58% }
 
 .text-carousel ul { list-style: none }
 
@@ -334,14 +338,14 @@ li.nav-list-item { cursor: pointer }
 
 .image-carousel img { width: 100% }
 
-.carousel-discover-link i {
-  color: var(--font-orange);
-  margin-left: 0.5em;
-}
-
 .carousel-discover-link {
   margin-top: 3em;
   text-align: right;
+}
+
+.carousel-discover-link i {
+  color: var(--font-orange);
+  margin-left: 0.5em;
 }
 
 /* adjustments for both carousel slides to be exactly the same size */

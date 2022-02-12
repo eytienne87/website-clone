@@ -5,18 +5,32 @@ const carouselButtons = document.querySelector('.two-buttons-container');
 const adminButton = carouselButtons.firstElementChild;
 const memberButton = carouselButtons.lastElementChild;
 
+// ----- Functions -----
+
+function handleOnHoverEffect() {
+  if (!this.classList.contains('current-button')) {
+    this.style.outline = '1px solid var(--background-dark)';
+  }
+}
+
+function handleOffHoverEffect() {
+  if (!this.classList.contains('current-button')) {
+    this.style.outline = '1px solid transparent';
+  }
+}
 
 function handleBorderShadow() {
   const otherButton = this.nextElementSibling || this.previousElementSibling;
-
+  this.style.outline = '1px solid var(--background-dark)';
+  otherButton.style.outline = '1px solid transparent'
 }
 
-
-// Move the current slide and the next/previous slide when clicking on the buttons
-function handleSlideToggle(translateAmount) {
+// Move the slides when clicking on the buttons
+function moveSlides(translateAmount) {
   const currentSlide = track.querySelector('.current-slide');
   const nextSlide = currentSlide.nextElementSibling || currentSlide.previousElementSibling;
 
+  // Move slides
   currentSlide.style.transform = `translateX(${translateAmount}px)`;
   nextSlide.style.transform = `translateX(${translateAmount}px)`;
 
@@ -34,16 +48,53 @@ function positionSlides(slides) {
 
 positionSlides(slides);
 
+// ----- Listeners -----
 
+// Slides movement on click
 memberButton.addEventListener('click', (e) => {
   e.preventDefault();
-  handleSlideToggle(-trackWidth);
+  const sibling = e.currentTarget.nextElementSibling || e.currentTarget.previousElementSibling;
+  e.currentTarget.classList.add('current-button');
+  sibling.classList.remove('current-button');
+  moveSlides(-trackWidth);
 });
 
 adminButton.addEventListener('click', (e) => {
   e.preventDefault();
-  handleSlideToggle(0);
+  const sibling = e.currentTarget.nextElementSibling || e.currentTarget.previousElementSibling;
+  e.currentTarget.classList.add('current-button');
+  sibling.classList.remove('current-button');
+  moveSlides(0);
 });
 
-adminButton.addEventListener('click', handleBorderShadow)
-memberButton.addEventListener('click', handleBorderShadow)
+// Buttons border shadow effect
+adminButton.addEventListener('click', handleBorderShadow);
+memberButton.addEventListener('click', handleBorderShadow);
+
+adminButton.addEventListener('mouseover', handleOnHoverEffect);
+adminButton.addEventListener('mouseleave', handleOffHoverEffect);
+
+memberButton.addEventListener('mouseover', handleOnHoverEffect);
+memberButton.addEventListener('mouseleave', handleOffHoverEffect);
+
+// Slides movement on drag
+let isDown;
+let startX;
+
+track.addEventListener('mousedown', (e) => {
+  isDown = true;
+  startX = e.screenX - track.offsetLeft
+  console.log(startX);
+});
+
+track.addEventListener('mouseleave', () => {
+  isDown = false;
+});
+
+track.addEventListener('mouseup', () => {
+  isDown = false;
+});
+
+track.addEventListener('mousemove', () => {
+  if (!isDown) return
+});
