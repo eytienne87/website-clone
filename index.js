@@ -84,7 +84,7 @@ let startX;
 track.addEventListener('mousedown', (e) => {
   isDown = true;
   startX = e.screenX - track.offsetLeft
-  console.log(startX);
+  console.log(track.scrollLeft);
 });
 
 track.addEventListener('mouseleave', () => {
